@@ -18,7 +18,8 @@ export const logger = new Logger({
 const queue = new Queue(tracks);
 
 const app = express();
-const PORT = process.env.PORT || 80;
+let PORT = parseInt(process.env.PORT) || 80;
+PORT = process.env.ENV === 'prod' ? PORT : PORT + 8000;
 
 app.get('/eurobeat', (req, res, next) => {
     queue.addSink(res);
