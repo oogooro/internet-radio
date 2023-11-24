@@ -25,6 +25,11 @@ app.get('/eurobeat', (req, res, next) => {
     queue.addSink(res);
 });
 
+app.use((req, res,) => {
+    res.status(404);
+    res.send('Error 404');
+});
+
 app.listen(PORT, () => {
     logger.log({
         level: 'init',
